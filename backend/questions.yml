@@ -1,0 +1,36 @@
+1:
+  question: multi line
+            question bla bla
+
+            forced line break
+  answers:
+    - some text
+    - some more 
+      text
+    - a third text
+  correct: 0
+  explain: blah blah
+2:
+  question: multi line
+            question bla bla
+
+            forced line break
+  answers:
+    - some text
+    - some more 
+      text
+    - a third text
+  correct: 0
+  explain: blah blah 
+3:
+  question: multi line
+            question bla bla
+
+            forced line break
+  answers:
+    - some text
+    - some more 
+      text
+    - a third text
+  correct: 0
+  explain: blah blah 
