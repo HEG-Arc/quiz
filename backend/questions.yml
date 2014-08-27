@@ -1,36 +1,33 @@
+# question source http://www.indiabix.com/
 1:
-  question: multi line
-            question bla bla
-
-            forced line break
+  question: Grand Central Terminal, Park Avenue, New York is the world's
   answers:
-    - some text
-    - some more 
-      text
-    - a third text
-  correct: 0
-  explain: blah blah
+    - largest railway station
+    - highest railway station
+    - longest railway station
+    - None of the above
+  explain: "For more details, Refer: http://en.wikipedia.org/wiki/Grand_Central_Terminal"
 2:
-  question: multi line
-            question bla bla
-
-            forced line break
+  question: Entomology is the science that studies
   answers:
-    - some text
-    - some more 
-      text
-    - a third text
-  correct: 0
-  explain: blah blah 
+    - Insects
+    - Behavior of human beings
+    - The origin and history of technical and scientific terms
+    - The formation of rocks
+  explain: "Entomology: The branch of zoology concerned with the study of insects."
 3:
-  question: multi line
-            question bla bla
-
-            forced line break
+  question: Eritrea, which became the 182nd member of the UN in 1993, is in the continent of
   answers:
-    - some text
-    - some more 
-      text
-    - a third text
-  correct: 0
-  explain: blah blah 
+    - Africa
+    - Asia
+    - Australia
+    - Europe
+  explain: No answer description available for this question.
+4:
+  question: What's a web browser?
+  answers:
+    - A software program that allows you to access sites on the World Wide Web
+    - A kind of spider
+    - A computer that stores WWW files
+    - A person who likes to look at websites
+  explain: No answer description available for this question.
