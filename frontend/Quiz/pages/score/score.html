@@ -2,19 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Quiz</title>
+    <title>score</title>
 
     <!-- WinJS references -->
     <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
 
-    <!-- Quiz references -->
     <link href="/css/default.css" rel="stylesheet" />
-    <script src="/js/default.js"></script>
-    <script src="/js/navigator.js"></script>
+    <link href="/pages/score/score.css" rel="stylesheet" />
+    <script src="/pages/score/score.js"></script>
 </head>
 <body>
-    <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/home/home.html'}"></div>
+    <div class="score fragment">
+        <section class="page-section" aria-label="Main content" role="main">
+            <div id="score"></div>
+        </section>
+    </div>
 </body>
 </html>

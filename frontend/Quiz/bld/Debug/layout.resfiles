@@ -5,3 +5,14 @@ images\smalllogo.scale-100.png
 images\splashscreen.scale-100.png
 images\storelogo.scale-100.png
 js\default.js
+js\navigator.js
+pages\home\home.css
+pages\home\home.html
+pages\home\home.js
+pages\question\question.css
+pages\question\question.html
+pages\question\question.js
+pages\score\score.css
+pages\score\score.html
+pages\score\score.js
+sampleData.js

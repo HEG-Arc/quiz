@@ -1,2 +1,8 @@
-﻿body {
+﻿body {  
+    background-color: #1A8AC9;    
+}
+
+#contenthost {
+    height: 100%;
+    width: 100%;
 }

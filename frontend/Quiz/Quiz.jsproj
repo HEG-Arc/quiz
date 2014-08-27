@@ -63,6 +63,16 @@
     <Content Include="images\storelogo.scale-100.png" />
     <Content Include="js\default.js" />
     <Content Include="css\default.css" />
+    <Content Include="js\navigator.js" />
+    <Content Include="pages\home\home.css" />
+    <Content Include="pages\home\home.html" />
+    <Content Include="pages\home\home.js" />
+    <Content Include="pages\question\question.css" />
+    <Content Include="pages\question\question.html" />
+    <Content Include="pages\question\question.js" />
+    <Content Include="pages\score\score.css" />
+    <Content Include="pages\score\score.html" />
+    <Content Include="pages\score\score.js" />
     <Content Include="sampleData.js" />
     <None Include="Quiz_TemporaryKey.pfx" />
   </ItemGroup>
