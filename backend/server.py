@@ -8,6 +8,8 @@ import random
 import ConfigParser
 import cgi
 import sys
+import string
+from printer import Printer
 
 PORT_NUMBER = 9002
 
@@ -15,6 +17,7 @@ class App:
   def __init__(self):
     self.config = Config()
     self.setMachineAndDB()
+    self.printer = Printer()
     
   def setMachineAndDB(self):
     if hasattr(self, 'db') and self.db.conn:
@@ -52,8 +55,16 @@ class App:
     return data
   
   def doPrint(self, session, raw_score):
-    #url machine, session, score_hash, ctrl flag?
-    print app.machine, session, self.config.scoreValueTable()[int(raw_score)]
+    #machine, session, score_hash, ctrl flag?
+    code = str(self.machine)
+    code += str(session)
+    code += str(self.config.scoreHashTable()[int(raw_score)])
+    code += str(compute_checksum(code))
+
+    #log
+    self.db.saveScore(session, raw_score)
+    #print
+    self.printer.doPrint(self, self.config.get('url') + '/' + code, self.config.scoreValueTable()[int(raw_score)])
   
 class Config:
   def __init__(self):
@@ -64,11 +75,11 @@ class Config:
     self.config.read('config.cfg')
   
   def get(self, key):
-    return self.config.getint('Main', key)
+    return self.config.get('Main', key)
     
   def getScoreValue(self, hash):
     try:
-      return self.config.get('Score', hash)
+      return int(self.config.get('Score', hash))
     except (NoOptionError):
       return 0
   def scoreHashTable(self):
@@ -179,6 +190,16 @@ class MyRequestHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
 def addId(id, value):
   value['id'] = id
   return value
+  
+def compute_checksum(code):
+  code = code.lower()
+  checksum = 0
+  for char in code:
+    if char.isdigit():
+      checksum += int(char)
+    else:
+      checksum += int(string.lowercase.index(char))
+  return checksum % 10
   
 if __name__ == "__main__":
   global app
