@@ -1,0 +1,15 @@
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Debug\ReverseMap\resources.pri
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Debug\AppxManifest.xml
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Debug\Quiz.build.appxrecipe
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\priconfig.xml
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\priconfig.xml.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\layout.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\layout.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\resources.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\resources.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\pri.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\pri.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\qualifiers.txt
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\qualifiers.txt.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Debug\ProjectArchitectures.txt
