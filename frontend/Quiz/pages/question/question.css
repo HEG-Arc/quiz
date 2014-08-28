@@ -1,32 +1,43 @@
-﻿.question section {
-	margin: auto 120px;
+﻿#question-box{
+	font-weight: bold;
+	font-size: 16pt;
+	width: 800px;
+	margin: 20px auto;
 }
 
-.phone .question .page-section {
-	margin: auto 24px;
+#question{
+	font-weight: normal;
 }
 
-.phone .question .page-header .titlearea {
-	-ms-grid-column: 1;
-	margin-top: 37px;
-	margin-left: 24px;
-	font-size: 28pt;
-	width: calc(100vw - 20px);
+.item{
+	height: 60px;
+	text-align: left;
 }
 
-.phone .question .back-button {
-	display: none;
-}
-
-.fragment {
-	-ms-grid-columns: 1fr;
-	-ms-grid-rows: 128px 1fr;
-	display: -ms-grid;
+.win-listview{
+	width: 800px;
 	height: 100%;
-	width: 100%;
+	margin: auto;	
 }
 
-	.fragment section[role=main] {
-		-ms-grid-row: 2;
-		height: 100%;
-	}
+.win-listview > .win-vertical .win-container{
+	margin-top: 20px;
+}
+
+.win-listview .win-container{
+	color: #177BB2;
+	background-color: #fff;
+    counter-increment: listCount;
+	padding: 20px;
+	font-size: 18pt;
+}
+
+.item::before {
+	content: counter(listCount, upper-alpha);
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+.win-listview .win-container .win-itembox{
+	background-color: transparent;
+}

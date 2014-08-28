@@ -15,6 +15,19 @@
     <script src="/js/navigator.js"></script>
 </head>
 <body>
+	<nav>
+		<img alt="logo" src="/images/logo.jpg" style="width: 554px; height: 89px;">
+        <div id="progress" data-win-control="WinJS.UI.Repeater">
+            <div class="question-status-repeater"><div class="question-status" data-win-bind="innerText: nb; className: cls"></div><div class="question-separator" data-win-bind="style.display: last"></div></div>
+        </div>
+        <div class="question-score" id="score-display"></div>
+	</nav>
     <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/home/home.html'}"></div>
+	<div id="timeout">
+		<svg>
+			<path id="ring" fill="#177BB2"/>
+			<circle cx="40" cy="40" r="22" fill="#1A8AC9"/>
+		</svg>
+	</div>
 </body>
 </html>

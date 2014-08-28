@@ -23,19 +23,21 @@
         return array;
     }
 
+    var answersList;
+    var self;
 
     WinJS.UI.Pages.define("/pages/question/question.html", {
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
+            self = this;
             this.question = options.question;
             element.querySelector('#question').innerText = this.question.question;
             var answers = shuffle(this.question.answers.slice(0));
             
-            element.querySelector('#answers').winControl.itemDataSource = new WinJS.Binding.List(answers).dataSource;
-
-            var nextButton = element.querySelector("#next");
-            nextButton.addEventListener("click", this.handleNext);
+            answersList = element.querySelector('#answers')
+            answersList.winControl.itemDataSource = new WinJS.Binding.List(answers).dataSource;
+            answersList.addEventListener("iteminvoked", this.itemClick.bind(this));
         },
 
         unload: function () {
@@ -47,11 +49,15 @@
 
             // TODO: Respond to changes in layout.
         },
-        itemClick: function () {
-            var answer;
-            //log item
-            Game.answer(this.question.id, this.question.answers.indexOf(answer));
+        itemClick: function (event) {
+            //log item with index of real answer not shuffled
+            var realIndex =  self.question.answers.indexOf(answersList.winControl.itemDataSource.list.getAt(event.detail.itemIndex));
+            Game.answer(self.question.id,realIndex);
             //display answer + next button
+            var msg = realIndex === 0 ? 'Correct!' : 'Faux!';
+            var myMessage = new Windows.UI.Popups.MessageDialog(this.question.explain, msg);
+            myMessage.commands.append(new Windows.UI.Popups.UICommand('Suivant', this.handleNext));
+            myMessage.showAsync();
 
         },
         handleNext: function (mouseEvent) {

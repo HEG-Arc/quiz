@@ -9,31 +9,54 @@
     var sched = WinJS.Utilities.Scheduler;
     var ui = WinJS.UI;
 
+    WinJS.Namespace.define("Timeout", {
+        r: 40,
+        lastFrame: 0,
+		stopwatch: 0,
+        init: function(){
+            this.ring = WinJS.Utilities.query('svg path')[0];
+            this.ring.setAttribute('transform', 'translate(' + this.r + ', ' + this.r + ')');
+            requestAnimationFrame(this.updateTime.bind(this));
+        },
+        draw: function (value) {
+            var r = this.r;
+            // Update the wheel giving to it a value in degrees,
+            // getted from the percentage of the input value
+            // a.k.a. (value * 360) / 100
+            var degrees = value * 3.5999,
+                // Convert the degrees value to radians
+                rad = degrees * Math.PI / 180,
+                // Determine X and cut to 2 decimals
+                x = (Math.sin(rad) * r).toFixed(2),
+                // Determine Y and cut to 2 decimals
+                y = -(Math.cos(rad) * r).toFixed(2),
+                // The another half ring. Same as (deg > 180) ? 1 : 0
+                lenghty = Number(degrees > 180),
+                // Moveto + Arcto
+                descriptions = ['M', 0, 0, 'v', -r, 'A', r, r, 1, lenghty, 1, x, y, 'z'];
+            // Apply changes to the path
+            this.ring.setAttribute('d', descriptions.join(' '));
+        },
+        updateTime: function (now) {
+			
+            var delta = now - this.lastFrame;
+            this.lastFrame = now;
+			this.stopwatch += delta;
+			var timeout = Game.data ? Game.data.timeout * 1000 : Infinity;
+			if(this.stopwatch > timeout){
+			    Game.reset();
+			}
+            this.draw(Math.min(this.stopwatch / timeout * 100, 100));
+            requestAnimationFrame(this.updateTime.bind(this));
+        }
+    });
+
     WinJS.Namespace.define("Game", {
         apiUrl: "http://127.0.0.1:9002",
         start: function start() {
-
-
-
-            /*
-            var progress = WinJS.Utilities.query('#progressOverlay');
-            var contenthost = WinJS.Utilities.query('#contenthost');
-
-            progress.setStyle('display', 'block');
-            contenthost.setStyle('visibility', 'hidden');
-            setTimeout(function () {
-                Data.load(function () {
-                    progress.setStyle('display', 'none');
-                    contenthost.setStyle('visibility', 'visible');
-                    if (typeof callback == "function") {
-                        callback();
-                    }
-                });
-            }, 100);
-            */
-
             this.score = 0;
             var self = this;
+
             //Start loading
 
             WinJS.xhr({ url: this.apiUrl + '/start' }).then(
@@ -47,6 +70,15 @@
                             md.showAsync();
                         } else {
                             self.data = data;
+                            self.updateScore();
+                            var progress = WinJS.Utilities.query('#progress')[0];
+                            self.questions = new WinJS.Binding.List([]);
+                            self.data.questions.forEach(function (item, index) {
+                                //winjs is horrible we need real css property values cannot use true/false...
+                                self.questions.push({ nb: index + 1, cls: 'question-status', last: self.data.questions.length - 1 === index ? 'none' : 'inline-block' });
+                            })
+                            progress.winControl.data = self.questions;
+                            
                             self.next();
                         }
                     } catch (e) {
@@ -57,25 +89,67 @@
             );
         },
         next: function next() {
+            Timeout.stopwatch = 0;
             if (this.data.questions.length > 0) {
                 //naviguateToNextQuestion
+                this.index = this.questions.length - this.data.questions.length;
+                
+                var obj = this.questions.getAt(this.index)
+                obj.cls = 'question-status active';
+                //hack to trigger repeater update... winjs bad...
+                this.questions.setAt(this.index, obj);
                 var question = this.data.questions.shift();
                 nav.navigate("/pages/question/question.html", { question: question });
             } else {
                 //naviguate to score
                 nav.navigate("/pages/score/score.html", { score: this.score });
                 //print score
-                //TODO
+                console.log(this.data.session);
+                WinJS.xhr({
+                    type: 'post',
+                    headers: { "Content-type": "application/x-www-form-urlencoded" },
+                    url: this.apiUrl + '/print',
+                    data: 'session=' + this.data.session + '&raw_score=' + this.score
+                });
             }
         },
         answer: function (question, answer) {
+            var obj = this.questions.getAt(this.index)
             if (answer === 0) {
                 this.score++;
+                obj.cls = 'question-status right';
+            } else {
+                obj.cls = 'question-status wrong';
             }
+            //hack to trigger repeater update... winjs bad...
+            this.questions.setAt(this.index, obj);
+            this.updateScore();
             //log
-            //TODO
-            //this.data.session, question, answer
+            console.log(this.data.session, question, answer);
+            WinJS.xhr({
+                type: 'post',
+                headers: { "Content-type": "application/x-www-form-urlencoded" },
+                url: this.apiUrl + '/log',
+                data: 'session=' + this.data.session + '&question=' + question + '&answer='  + answer
+            });
             
+        },
+        reset: function () {
+            delete this.data;
+            delete this.questions;
+            delete this.questions;
+            delete this.index;
+            delete this.score;
+            this.updateScore();
+            var progress = WinJS.Utilities.query('#progress')[0];
+            //winjs binding not working with repeater.........
+            progress.winControl.data = new WinJS.Binding.List([]);
+            nav.navigate("/pages/home/home.html");
+        },
+        updateScore: function () {
+            //manual upate, making winjs binding to comlicated...
+            var score = WinJS.Utilities.query('#score-display')[0];
+            score.innerText =  this.data ? this.data.scores[this.score] : '';
         }
     });
 
@@ -101,6 +175,8 @@
                 return sched.requestDrain(sched.Priority.aboveNormal + 1);
             }).then(function () {
                 ui.enableAnimations();
+                Timeout.init();
+                Game.reset();
             });
 
             args.setPromise(p);

@@ -14,11 +14,20 @@
     <script src="/pages/question/question.js"></script>
 </head>
 <body>
+	<div class="itemTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+		<div class="item" data-win-bind="textContent: this"></div>
+	</div>
     <div class="question fragment">
         <section class="page-section" aria-label="Main content" role="main">
-            <div id="question"></div>
-            <div id="answers" data-win-control="WinJS.UI.ListView"></div>
-            <button id="next">next</button>
+            <div id="question-box">Question: <span id="question"></span></div>
+            <div id="answers"
+				data-win-control="WinJS.UI.ListView"
+				data-win-options="{itemTemplate: select('.itemTemplate'),
+					selectionMode: 'none',
+					swipeBehavior: 'none',
+					layout: { type: WinJS.UI.ListLayout }
+				}"
+				></div>
         </section>
     </div>
 </body>

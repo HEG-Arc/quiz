@@ -1,32 +1,59 @@
-﻿.score section {
-	margin: auto 120px;
+﻿#score-info{
+	font-size: 32pt;
+	text-align: center;
+	padding-top: 30px;
 }
 
-.phone .score .page-section {
-	margin: auto 24px;
+#score{
+	font-size: 64pt;
+	font-weight: bold;
+	text-align: center;
+	padding: 30px;
 }
 
-.phone .score .page-header .titlearea {
-	-ms-grid-column: 1;
-	margin-top: 37px;
-	margin-left: 24px;
-	font-size: 28pt;
-	width: calc(100vw - 20px);
+.ticket{
+	color: #E53200;
+	font-size: 32pt;
+	text-align: center;
+}
+.down-arrow{
+	display: block;
+    cursor: pointer;
+    position: relative;
+    width: 140px;
+    height: 280px;
+    margin: 50px auto;
+    border-top: transparent;
+}
+.down-arrow:before,
+.down-arrow:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+	animation: bounce .5s infinite alternate;
+}
+.down-arrow:before{
+	left: 29px;
+    top: 0;
+    width: 100px;
+    height: 180px;
+    background-color: #E53200;
+}
+.down-arrow:after{
+	left: 0;
+	top: 180px;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-top: 80px solid #E53200;
 }
 
-.phone .score .back-button {
-	display: none;
-}
+@keyframes bounce {
+  from {
+    transform: translateY(-10px);
+  }
 
-.fragment {
-	-ms-grid-columns: 1fr;
-	-ms-grid-rows: 128px 1fr;
-	display: -ms-grid;
-	height: 100%;
-	width: 100%;
+  to {
+    transform: translateY(0);
+  }
 }
-
-	.fragment section[role=main] {
-		-ms-grid-row: 2;
-		height: 100%;
-	}
