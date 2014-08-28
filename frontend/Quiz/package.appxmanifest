@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build" IgnorableNamespaces="build">
-  <Identity Name="db2ed6c7-d4e5-4ff1-b352-edbc920d5f1d" Version="1.0.0.0" Publisher="CN=Boris" />
+  <Identity Name="db2ed6c7-d4e5-4ff1-b352-edbc920d5f1d" Version="1.0.0.2" Publisher="CN=Boris" />
   <Properties>
     <DisplayName>Quiz</DisplayName>
     <PublisherDisplayName>Boris</PublisherDisplayName>
@@ -22,6 +22,8 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClientServer" />
   </Capabilities>
   <build:Metadata>
     <build:Item Name="Blend" Version="12.0.50716.0" />

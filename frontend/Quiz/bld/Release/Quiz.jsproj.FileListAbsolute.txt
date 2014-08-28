@@ -1,0 +1,15 @@
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\resources.pri
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\AppxManifest.xml
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\Quiz.build.appxrecipe
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\priconfig.xml
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\priconfig.xml.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\layout.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\layout.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\resources.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\resources.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\pri.resfiles
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\pri.resfiles.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\qualifiers.txt
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\qualifiers.txt.intermediate
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\ProjectArchitectures.txt
