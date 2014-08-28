@@ -33,7 +33,7 @@ class App:
         self.setMachineAndDB()
       #get N random quiz questions
       questions = yaml.load(file('questions.yml', 'r') )
-      quiz_questions_ids = random.sample(questions.keys(), self.config.get('number_questions'))
+      quiz_questions_ids = random.sample(questions.keys(), int(self.config.get('number_questions')))
       
       #create session
       session = self.db.getSession()
@@ -44,7 +44,7 @@ class App:
       #send data as json
       data = {
         'session': session,
-        'timeout': self.config.get('timeout'),
+        'timeout': int(self.config.get('timeout')),
         'scores': self.config.scoreValueTable(),
         'questions': [addId(id, questions[id]) for id in quiz_questions_ids]
       }
