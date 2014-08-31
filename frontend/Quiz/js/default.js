@@ -42,7 +42,7 @@
             var delta = now - this.lastFrame;
             this.lastFrame = now;
 			this.stopwatch += delta;
-			var timeout = Game.data ? Game.data.timeout * 1000 : Infinity;
+			var timeout = Game.data ? (Game.state === 'score' ? Game.data.ptimeout * 1000 : Game.data.qtimeout * 1000) : Infinity;
 			if(this.stopwatch > timeout){
 			    Game.reset();
 			}
@@ -105,11 +105,12 @@
                 this.questions.setAt(this.index, obj);
                 var question = this.data.questions.shift();
                 nav.navigate("/pages/question/question.html", { question: question });
+                this.state = "question";
             } else {
                 //naviguate to score
                 nav.navigate("/pages/score/score.html", { score: this.score });
+                this.state = "score";
                 //print score
-                console.log(this.data.session);
                 WinJS.xhr({
                     type: 'post',
                     headers: {
@@ -133,7 +134,6 @@
             this.questions.setAt(this.index, obj);
             this.updateScore();
             //log
-            console.log(this.data.session, question, answer);
             WinJS.xhr({
                 type: 'post',
                 headers: {
@@ -156,6 +156,7 @@
             //winjs binding not working with repeater.........
             progress.winControl.data = new WinJS.Binding.List([]);
             nav.navigate("/pages/home/home.html");
+            this.state = "home";
         },
         updateScore: function () {
             //manual upate, making winjs binding to comlicated...

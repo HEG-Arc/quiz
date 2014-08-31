@@ -27,7 +27,7 @@ class Printer:
     doc.rightMargin = 0
 
     parts = []
-    d = barcode.createBarcodeDrawing("QR", width=7*cm, height=7*cm, barBorder=0, value=qrcode_value)
+    d = barcode.createBarcodeDrawing("QR", width=5*cm, height=5*cm, barBorder=0, value=qrcode_value)
     d.hAlign = "CENTER"
     d.vAlign = "TOP"
 

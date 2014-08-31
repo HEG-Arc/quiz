@@ -44,7 +44,8 @@ class App:
       #send data as json
       data = {
         'session': session,
-        'timeout': int(self.config.get('timeout')),
+        'qtimeout': int(self.config.get('qtimeout')),
+        'ptimeout': int(self.config.get('ptimeout')),
         'scores': self.config.scoreValueTable(),
         'questions': [addId(id, questions[id]) for id in quiz_questions_ids]
       }
