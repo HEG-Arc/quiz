@@ -58,8 +58,13 @@
             var self = this;
 
             //Start loading
-
-            WinJS.xhr({ url: this.apiUrl + '/start' }).then(
+            //Ensuring that the client resends requests http://msdn.microsoft.com/en-us/library/windows/apps/hh868281.aspx
+            WinJS.xhr({
+                url: this.apiUrl + '/start',
+                headers: {
+                    "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
+                }
+                }).then(
                 function (request) {
                     var md;
                     //STOP loading
@@ -107,7 +112,10 @@
                 console.log(this.data.session);
                 WinJS.xhr({
                     type: 'post',
-                    headers: { "Content-type": "application/x-www-form-urlencoded" },
+                    headers: {
+                        "Content-type": "application/x-www-form-urlencoded",
+                        "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
+                    },
                     url: this.apiUrl + '/print',
                     data: 'session=' + this.data.session + '&raw_score=' + this.score
                 });
@@ -128,7 +136,10 @@
             console.log(this.data.session, question, answer);
             WinJS.xhr({
                 type: 'post',
-                headers: { "Content-type": "application/x-www-form-urlencoded" },
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded",
+                    "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
+                },
                 url: this.apiUrl + '/log',
                 data: 'session=' + this.data.session + '&question=' + question + '&answer='  + answer
             });
