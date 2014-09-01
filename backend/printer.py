@@ -1,14 +1,24 @@
+# -*- coding: utf-8 -*-
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.graphics import barcode
 from reportlab.graphics.barcode.qr import QrCodeWidget
 from reportlab.lib.units import cm
 from reportlab.lib.enums import TA_LEFT, TA_CENTER
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+pdfmetrics.registerFont(TTFont('FontAwesome', 'fontawesome-webfont.ttf'))
+#pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))
+#pdfmetrics.registerFont(TTFont('ArialBd', 'arialbd.ttf'))
+#pdfmetrics.registerFont(TTFont('ArialIt', 'ariali.ttf'))
+#pdfmetrics.registerFont(TTFont('ArialBI', 'arialbi.ttf'))
+
+
 from subprocess import call
 import tempfile
 
 class Printer:
-  def doPrint(self, app, qrcode_value, score):
+  def doPrint(self, app, qrcode_value, raw_score):
     pdf_file_name = tempfile.mktemp (".pdf")
     styles = getSampleStyleSheet ()
     h1 = styles["h1"]
@@ -19,6 +29,11 @@ class Printer:
     normal = styles["Normal"]
     normal.alignment=TA_CENTER
     normal.fontSize = 16
+    starStyle = ParagraphStyle(name='Star',
+                                  fontName='FontAwesome',
+                                  fontSize=20,
+                                  alignment=TA_CENTER,
+                                  spaceAfter = 18)
 
     doc = SimpleDocTemplate (pdf_file_name)
     doc.pagesize = (8*cm, 29*cm)
@@ -26,15 +41,41 @@ class Printer:
     doc.leftMargin = 0
     doc.rightMargin = 0
 
+    wheel_threshold = app.config.get('wheel_threshold')
+    number_questions = app.config.get('number_questions')
+    percent = float(raw_score) / float(number_questions)
+    canWheel = float(percent) > float(wheel_threshold) / float(number_questions)
+
     parts = []
-    d = barcode.createBarcodeDrawing("QR", width=5*cm, height=5*cm, barBorder=0, value=qrcode_value)
-    d.hAlign = "CENTER"
-    d.vAlign = "TOP"
 
     normal.spaceAfter = 18
-    parts.append(Paragraph("Scannez votre ticket pour tourner la roue!", normal))
-    parts.append(d)
-    parts.append(Paragraph(str(score), h1))
+    if canWheel:
+      parts.append(Paragraph("Scannez votre ticket pour tourner la roue!", normal))
+
+      d = barcode.createBarcodeDrawing("QR", width=5*cm, height=5*cm, barBorder=0, value=qrcode_value)
+      d.hAlign = "CENTER"
+      d.vAlign = "TOP"    
+      parts.append(d)
+    else:
+      parts.append(Paragraph("Venez chercher un stylo!", normal))
+
+    parts.append(Paragraph(str(app.config.scoreValueTable()[raw_score]), h1))
+    empty_star = u"\uF006"
+    full_star = u"\uF005"
+    
+    stars = u""
+    print percent
+    if percent <= 0.3:
+      stars += 3 * empty_star
+    elif percent < 0.6:
+      stars += full_star + 2 * empty_star
+    elif percent < 1:
+      stars += 2 * full_star + empty_star
+    else:
+      stars += 3 * full_star
+      
+    parts.append(Paragraph(stars, starStyle))
+    
     parts.append(Paragraph(app.config.get('url'), normal))
     doc.build(parts)
     call([app.config.get('acrobat'), "", pdf_file_name])

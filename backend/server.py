@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import SimpleHTTPServer
 import BaseHTTPServer
 import os
@@ -65,7 +66,7 @@ class App:
     #log
     self.db.saveScore(session, raw_score)
     #print
-    self.printer.doPrint(self, self.config.get('url') + '/' + code, self.config.scoreValueTable()[int(raw_score)])
+    self.printer.doPrint(self, self.config.get('url') + '/' + code, int(raw_score))
   
 class Config:
   def __init__(self):
