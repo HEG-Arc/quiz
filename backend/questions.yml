@@ -1,6 +1,6 @@
 # question source http://www.indiabix.com/
 1:
-  question: Grand Central Terminal, Park Avenue, New York is the world's
+  question: Grand Central Terminal, Park Avenue, New York is the world's...?
   answers:
     - largest railway station
     - highest railway station
@@ -8,7 +8,7 @@
     - None of the above
   explain: "For more details, Refer: http://en.wikipedia.org/wiki/Grand_Central_Terminal"
 2:
-  question: Entomology is the science that studies
+  question: Entomology is the science that studies...?
   answers:
     - Insects
     - Behavior of human beings

@@ -1,1 +1,1 @@
-C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\AppPackages\Quiz_1.0.0.3_AnyCPU_Test\Quiz_1.0.0.3_AnyCPU.appx
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\AppPackages\Quiz_1.0.0.4_AnyCPU_Test\Quiz_1.0.0.4_AnyCPU.appx

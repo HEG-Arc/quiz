@@ -23,7 +23,6 @@
         return array;
     }
 
-    var answersList;
     var self;
 
     WinJS.UI.Pages.define("/pages/question/question.html", {
@@ -35,9 +34,12 @@
             element.querySelector('#question').innerText = this.question.question;
             var answers = shuffle(this.question.answers.slice(0));
             
-            answersList = element.querySelector('#answers')
-            answersList.winControl.itemDataSource = new WinJS.Binding.List(answers).dataSource;
-            answersList.addEventListener("iteminvoked", this.itemClick.bind(this));
+            this.answersList = element.querySelector('#answers')
+            this.answersList.winControl.itemDataSource = new WinJS.Binding.List(answers).dataSource;
+            this.answersList.addEventListener("iteminvoked", this.itemClick.bind(this));
+            this.answerBox = element.querySelector("#answer");
+            this.answerTitle = element.querySelector("#answer h2");
+            this.answerText = element.querySelector("#answer p");
         },
 
         unload: function () {
@@ -51,14 +53,18 @@
         },
         itemClick: function (event) {
             //log item with index of real answer not shuffled
-            var realIndex =  self.question.answers.indexOf(answersList.winControl.itemDataSource.list.getAt(event.detail.itemIndex));
+            var realIndex =  self.question.answers.indexOf(this.answersList.winControl.itemDataSource.list.getAt(event.detail.itemIndex));
             Game.answer(self.question.id,realIndex);
             //display answer + next button
-            var msg = realIndex === 0 ? 'Correct!' : 'Faux!';
-            var myMessage = new Windows.UI.Popups.MessageDialog(this.question.explain, msg);
-            myMessage.commands.append(new Windows.UI.Popups.UICommand('Suivant', this.handleNext));
-            myMessage.showAsync();
-
+            var msg = realIndex === 0 ? 'Correct :-D' : "Faux :'-(";
+            WinJS.UI.Animation.fadeOut(this.answersList).then(function () { this.answersList.style.display = 'none'; }.bind(this))
+            this.answerTitle.innerText = msg;
+            this.answerText.innerText = this.question.explain;
+            this.answerBox.style.display = 'block';
+            this.answerBox.addEventListener("click", this.handleNext)
+            WinJS.UI.Animation.showPopup(this.answerBox);
+            Game.state = "answer";
+            Timeout.stopwatch = 0;
         },
         handleNext: function (mouseEvent) {
             Game.next();

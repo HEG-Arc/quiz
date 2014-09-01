@@ -42,9 +42,24 @@
             var delta = now - this.lastFrame;
             this.lastFrame = now;
 			this.stopwatch += delta;
-			var timeout = Game.data ? (Game.state === 'score' ? Game.data.ptimeout * 1000 : Game.data.qtimeout * 1000) : Infinity;
+			var timeout = Infinity;
+			if (Game.data) {
+			    if (Game.state === 'score') {
+			        timeout = Game.data.ptimeout;
+			    }
+			    else if (Game.state === 'answer') {
+			        timeout = Game.data.atimeout;
+			    }else{
+			        timeout = Game.data.qtimeout;
+			    }
+			    timeout = timeout * 1000;
+			}
 			if(this.stopwatch > timeout){
-			    Game.reset();
+			    if (Game.state === 'answer') {
+			        Game.next();
+			    } else {
+			        Game.reset();
+			    }
 			}
             this.draw(Math.min(this.stopwatch / timeout * 100, 100));
             requestAnimationFrame(this.updateTime.bind(this));

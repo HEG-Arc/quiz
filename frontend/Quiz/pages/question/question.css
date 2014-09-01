@@ -1,12 +1,42 @@
 ﻿#question-box{
 	font-weight: bold;
-	font-size: 16pt;
+	font-size: 20pt;
 	width: 800px;
-	margin: 20px auto;
+	margin: 40px auto;
 }
 
 #question{
 	font-weight: normal;
+}
+
+
+#answer{
+	background-color: rgba(255,255,255,0.3);
+	width: 800px;
+	margin: 0 auto;
+	padding: 40px;
+	box-shadow: 0 0 10px 4px rgba(23,123,178,0.8);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 280px;
+	display: none;
+	min-height: 250px;
+}
+
+#answer h2{
+	font-size: 32pt;
+	text-align:center;
+}
+
+#answer p{
+	font-size: 22pt;
+}
+
+#answer span{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }
 
 .item{

@@ -47,6 +47,7 @@ class App:
       data = {
         'session': session,
         'qtimeout': int(self.config.get('qtimeout')),
+        'atimeout': int(self.config.get('atimeout')),
         'ptimeout': int(self.config.get('ptimeout')),
         'scores': self.config.scoreValueTable(),
         'questions': [addId(id, questions[id]) for id in quiz_questions_ids]

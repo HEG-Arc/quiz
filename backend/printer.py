@@ -8,11 +8,6 @@ from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 pdfmetrics.registerFont(TTFont('FontAwesome', 'fontawesome-webfont.ttf'))
-#pdfmetrics.registerFont(TTFont('Arial', 'arial.ttf'))
-#pdfmetrics.registerFont(TTFont('ArialBd', 'arialbd.ttf'))
-#pdfmetrics.registerFont(TTFont('ArialIt', 'ariali.ttf'))
-#pdfmetrics.registerFont(TTFont('ArialBI', 'arialbi.ttf'))
-
 
 from subprocess import call
 import tempfile
@@ -64,7 +59,6 @@ class Printer:
     full_star = u"\uF005"
     
     stars = u""
-    print percent
     if percent <= 0.3:
       stars += 3 * empty_star
     elif percent < 0.6:
