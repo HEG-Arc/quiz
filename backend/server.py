@@ -34,7 +34,8 @@ class App:
         self.setMachineAndDB()
       #get N random quiz questions
       questions = yaml.load(file('questions.yml', 'r') )
-      quiz_questions_ids = random.sample(questions.keys(), int(self.config.get('number_questions')))
+      keys = questions.keys()
+      quiz_questions_ids = random.sample(keys, min(int(self.config.get('number_questions')), len(keys)))
       
       #create session
       session = self.db.getSession()
