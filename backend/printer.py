@@ -44,7 +44,7 @@ class Printer:
     wheel_threshold = app.config.get('wheel_threshold')
     number_questions = app.config.get('number_questions')
     percent = float(raw_score) / float(number_questions)
-    canWheel = float(percent) > float(wheel_threshold) / float(number_questions)
+    canWheel = float(percent) >= float(wheel_threshold) / float(number_questions)
 
     parts = []
 
