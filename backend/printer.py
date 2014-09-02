@@ -47,7 +47,7 @@ class Printer:
     if canWheel:
       parts.append(Paragraph("Scannez votre ticket pour tourner la roue!", normal))
 
-      d = barcode.createBarcodeDrawing("QR", width=5*cm, height=5*cm, barBorder=0, value=qrcode_value)
+      d = barcode.createBarcodeDrawing("QR", width=4*cm, height=4*cm, barBorder=0, value=qrcode_value)
       d.hAlign = "CENTER"
       d.vAlign = "TOP"    
       parts.append(d)
