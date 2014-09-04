@@ -49,6 +49,8 @@ class App:
         'qtimeout': int(self.config.get('qtimeout')),
         'atimeout': int(self.config.get('atimeout')),
         'ptimeout': int(self.config.get('ptimeout')),
+        'printWaitTxt': self.config.get('print_wait_txt'),
+        'printDoneTxt': self.config.get('print_done_txt'),
         'scores': self.config.scoreValueTable(),
         'questions': [addId(id, questions[id]) for id in quiz_questions_ids]
       }
@@ -154,6 +156,14 @@ class DB:
     c = self.conn.cursor()
     c.execute("UPDATE attempts SET stop = datetime('now', 'localtime'), score = ? WHERE id = ?", (raw_score, session))
     self.conn.commit()
+    
+  def scoreGraph(self):
+    c = self.conn.cursor()
+    data = [0 for i in app.config.scoreHashTable()]
+    
+    for score in c.execute("SELECT score, COUNT(*) FROM attempts WHERE score IS NOT NULL GROUP BY score ORDER BY score ASC").fetchall():
+      data[score[0]] = score[1]
+    return data
   
 class MyRequestHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
     
@@ -180,16 +190,30 @@ class MyRequestHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
   
     if self.path == '/log':
       app.db.saveQuizAnswer(form.getfirst('session'), form.getfirst('question'), form.getfirst('answer'))
+      self.send_response(200)
+      #send headers:
+      self.send_header("Content-type:", "text/plain")
+      # send a blank line to end headers:
+      self.wfile.write("\n")
+    
+    elif self.path == '/score':
+      app.db.saveScore(form.getfirst('session'), form.getfirst('raw_score'))
+      self.send_response(200)
+      #send headers:
+      self.send_header("Content-type:", "application/json")
+      # send a blank line to end headers:
+      self.wfile.write("\n")
+      json.dump(app.db.scoreGraph(), self.wfile)
       
     elif self.path == '/print':
       app.doPrint(form.getfirst('session'), form.getfirst('raw_score'))
-      app.db.saveScore(form.getfirst('session'), form.getfirst('raw_score'))
+      self.send_response(200)
+      #send headers:
+      self.send_header("Content-type:", "text/plain")
+      # send a blank line to end headers:
+      self.wfile.write("\n")
 
-    self.send_response(200)
-    #send headers:
-    self.send_header("Content-type:", "text/plain")
-    # send a blank line to end headers:
-    self.wfile.write("\n")
+
       
 def addId(id, value):
   value['id'] = id

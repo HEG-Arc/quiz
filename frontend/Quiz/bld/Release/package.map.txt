@@ -1,5 +1,6 @@
 [Files]
 "C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\AppxManifest.xml" "AppxManifest.xml"
+"C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\audio\bell.mp3" "audio\bell.mp3"
 "C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\default.html" "default.html"
 "C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\pages\home\home.html" "pages\home\home.html"
 "C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\pages\question\question.html" "pages\question\question.html"

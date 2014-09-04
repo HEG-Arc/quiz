@@ -11,6 +11,40 @@
 	padding: 30px;
 }
 
+#graph{
+	height: 200px;
+	width: 800px;
+	margin: 0 auto 40px auto;
+	position: relative;
+    border-bottom: 1px solid white;
+}
+
+#graph .bar{
+	position: absolute;
+	height: 55%;
+	bottom: 0;
+	width: 12%;
+	background-color: #37667F;
+	margin: 0 10px;
+	font-size: 18pt;
+	text-align:center;
+}
+
+#graph .bar.active{
+	background-color: #E53200;
+	font-weight: bold;
+}
+
+#graph .bar .percent{
+	margin-top: -40px;
+}
+
+#graph .bar .x-score{
+	position:absolute;
+	bottom: -40px;
+	width: 100%;
+}
+
 .ticket{
 	color: #E53200;
 	font-size: 32pt;
@@ -24,6 +58,7 @@
     height: 280px;
     margin: 50px auto;
     border-top: transparent;
+    opacity: 0;
 }
 .down-arrow:before,
 .down-arrow:after

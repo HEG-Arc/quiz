@@ -129,18 +129,6 @@
                 //naviguate to score
                 nav.navigate("/pages/score/score.html", { score: this.score });
                 this.state = "score";
-                //print score
-                WinJS.xhr({
-                    type: 'post',
-                    headers: {
-                        "Content-type": "application/x-www-form-urlencoded",
-                        "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
-                    },
-                    url: this.apiUrl + '/print',
-                    data: 'session=' + this.data.session + '&raw_score=' + this.score
-                }).then(function () {
-                    console.log("done");
-                });
             }
         },
         answer: function (question, answer) {
