@@ -74,39 +74,43 @@
 
             //Start loading
             //Ensuring that the client resends requests http://msdn.microsoft.com/en-us/library/windows/apps/hh868281.aspx
-            WinJS.xhr({
+            WinJS.Promise.timeout(3000, WinJS.xhr({
                 url: this.apiUrl + '/start',
                 headers: {
                     "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
                 }
                 }).then(
-                function (request) {
-                    var md;
-                    //STOP loading
-                    try {
-                        var data = JSON.parse(request.responseText);
-                        if (data.error) {
-                            md = new Windows.UI.Popups.MessageDialog("Error: " + data.error);
-                            md.showAsync();
-                        } else {
-                            self.data = data;
-                            self.updateScore();
-                            var progress = WinJS.Utilities.query('#progress')[0];
-                            self.questions = new WinJS.Binding.List([]);
-                            self.data.questions.forEach(function (item, index) {
-                                //winjs is horrible we need real css property values cannot use true/false...
-                                self.questions.push({ nb: index + 1, cls: 'question-status', last: self.data.questions.length - 1 === index ? 'none' : 'inline-block' });
-                            })
-                            progress.winControl.data = self.questions;
+                    function (request) {
+                        var md;
+                        //STOP loading
+                        try {
+                            var data = JSON.parse(request.responseText);
+                            if (data.error) {
+                                md = new Windows.UI.Popups.MessageDialog("Error: " + data.error);
+                                md.showAsync();
+                            } else {
+                                self.data = data;
+                                self.updateScore();
+                                var progress = WinJS.Utilities.query('#progress')[0];
+                                self.questions = new WinJS.Binding.List([]);
+                                self.data.questions.forEach(function (item, index) {
+                                    //winjs is horrible we need real css property values cannot use true/false...
+                                    self.questions.push({ nb: index + 1, cls: 'question-status', last: self.data.questions.length - 1 === index ? 'none' : 'inline-block' });
+                                })
+                                progress.winControl.data = self.questions;
                             
-                            self.next();
+                                self.next();
+                            }
+                        } catch (e) {
+                            md = new Windows.UI.Popups.MessageDialog("Error fetching data from the service: " + e.message);
+                            md.showAsync();
                         }
-                    } catch (e) {
-                        md = new Windows.UI.Popups.MessageDialog("Error fetching data from the service: " + e.message);
+                    },
+                    function error() {
+                        var md = new Windows.UI.Popups.MessageDialog("Unable to contact server. Try again or contact Staff.");
                         md.showAsync();
                     }
-                }
-            );
+            ));
         },
         next: function next() {
             Timeout.stopwatch = 0;
@@ -134,6 +138,8 @@
                     },
                     url: this.apiUrl + '/print',
                     data: 'session=' + this.data.session + '&raw_score=' + this.score
+                }).then(function () {
+                    console.log("done");
                 });
             }
         },
