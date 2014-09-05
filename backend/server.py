@@ -49,6 +49,7 @@ class App:
         'qtimeout': int(self.config.get('qtimeout')),
         'atimeout': int(self.config.get('atimeout')),
         'ptimeout': int(self.config.get('ptimeout')),
+        'scoreInfo': self.config.get('score_info'),
         'printWaitTxt': self.config.get('print_wait_txt'),
         'printDoneTxt': self.config.get('print_done_txt'),
         'scores': self.config.scoreValueTable(),
@@ -58,6 +59,20 @@ class App:
       data = {
         'error': str(e)
       }
+    return data
+  
+  def homeConfig(self):
+    #reload configs
+    self.config.reload()
+    if self.machine != self.config.get('machine'):
+      self.setMachineAndDB()
+    #send data as json
+    data = {
+      'stimeout': float(self.config.get('stimeout')),
+      'slideshow': self.config.get('slideshow').split(','),
+      'startTxt': self.config.get('home_start'),
+      'loadingTxt': self.config.get('home_loading')
+    }
     return data
   
   def doPrint(self, session, raw_score):
@@ -177,6 +192,15 @@ class MyRequestHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):
       self.wfile.write("\n")      
       json.dump(app.startQuiz(), self.wfile)
 
+    elif self.path == '/home':
+      #send response code:
+      self.send_response(200)
+      #send headers:
+      self.send_header("Content-type:", "application/json")
+      # send a blank line to end headers:
+      self.wfile.write("\n")      
+      json.dump(app.homeConfig(), self.wfile)
+      
     else:
       return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 

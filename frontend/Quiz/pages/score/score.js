@@ -8,6 +8,7 @@
         // populates the page elements with the app's data.
         ready: function (element, options) {
             // TODO: Initialize the page here.
+            element.querySelector('#score-info').innerText = Game.data.scoreInfo;
             element.querySelector('#score').innerText = Game.data.scores[options.score];
             var ticketTxt = element.querySelector('.ticket');
             ticketTxt.innerHTML = Game.data.printWaitTxt;

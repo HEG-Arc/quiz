@@ -9,13 +9,46 @@
         // This function is called whenever a user navigates to this page. It
         // populates the page elements with the app's data.
         ready: function (element, options) {
-            // TODO: Initialize the page here.
             this.startButton = element.querySelector("#start");
-            this.startButton.addEventListener("click", this.handleStart.bind(this));
-        },
+            this.pic = element.querySelector(".slide");
+            this.element = element;
+            WinJS.Promise.timeout(3000, WinJS.xhr({
+                url: Game.apiUrl + '/home',
+                headers: {
+                    "If-Modified-Since": "Mon, 27 Mar 1972 00:00:00 GMT"
+                }
+            }).then(
+                function (request) {
+                    var data = JSON.parse(request.responseText);
+                    this.data = data;
+                    this.picIndex = 0;
+                    this.startButton.innerText = this.data.startTxt;
+                    this.startButton.addEventListener("click", this.handleStart.bind(this));
+                    this.nextPic();
+                    this.timer = setInterval(this.nextPic.bind(this), data.stimeout * 1000);
+                    
+                }.bind(this),
+                function error() {
 
+                }
+            ));
+            
+            
+        },
+        nextPic: function () {
+            if (this.picIndex >= this.data.slideshow.length) {
+                this.picIndex = 0;
+            }
+            WinJS.UI.Animation.fadeOut(this.pic).done(function () {
+                this.pic.src = Game.apiUrl + '/slideshow/' + this.data.slideshow[this.picIndex];
+                this.picIndex++;
+                WinJS.UI.Animation.fadeIn(this.pic);
+            }.bind(this));
+            
+        },
         unload: function () {
             // TODO: Respond to navigations away from this page.
+            clearInterval(this.timer);
         },
 
         updateLayout: function (element) {
@@ -25,7 +58,7 @@
         },
 
         handleStart: function (mouseEvent) {
-            this.startButton.innerText = 'chargement';
+            this.startButton.innerText = this.startButton.innerText = this.data.loadingTxt;
             Game.start();
         }
     });

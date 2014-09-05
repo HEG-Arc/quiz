@@ -45,15 +45,15 @@ class Printer:
     imagename = "images/stylo.png"
     normal.spaceAfter = 18
     if canWheel:
-      parts.append(Paragraph("Scannez votre ticket pour tourner la roue!", normal))
+      parts.append(Paragraph(app.config.get('wheel_txt'), normal))
 
       d = barcode.createBarcodeDrawing("QR", width=4*cm, height=4*cm, barBorder=0, value=qrcode_value)
       d.hAlign = "CENTER"
       d.vAlign = "TOP"    
       parts.append(d)
     else:
-      parts.append(Paragraph("Bon pour un stylo", normal))
-      parts.append(Image(filename))
+      parts.append(Paragraph(app.config.get('no_wheel_txt'), normal))
+      parts.append(Image(imagename, 4*cm, 4*cm))
 
     parts.append(Paragraph(str(app.config.scoreValueTable()[raw_score]), h1))
     empty_star = u"\uF006"
@@ -73,9 +73,7 @@ class Printer:
     
     parts.append(Paragraph(app.config.get('url'), normal))
     doc.build(parts)
-    call([app.config.get('foxit'), "/t", pdf_file_name])
+    call([app.config.get('acrobat'), "", pdf_file_name])
+    #call([app.config.get('foxit'), "/t", pdf_file_name, app.config.get('printer_name')])
     #call([app.config.get('acrobat'), "", pdf_file_name, app.config.get('printer_name')])
     #call([app.config.get('sumatra'), pdf_file_name, "-print-to", app.config.get('printer_name')])
-
-
-
