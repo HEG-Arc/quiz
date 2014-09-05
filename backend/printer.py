@@ -72,9 +72,9 @@ class Printer:
     
     parts.append(Paragraph(app.config.get('url'), normal))
     doc.build(parts)
-    #call([app.config.get('acrobat'), "", pdf_file_name])
-    #call([app.config.get('acrobat'), "/h", "/s", "/o", "/t", pdf_file_name, app.config.get('printer_name')])
-    call([app.config.get('sumatra'), pdf_file_name, "-print-to", app.config.get('printer_name')])
+    call([app.config.get('foxit'), "/t", pdf_file_name])
+    #call([app.config.get('acrobat'), "", pdf_file_name, app.config.get('printer_name')])
+    #call([app.config.get('sumatra'), pdf_file_name, "-print-to", app.config.get('printer_name')])
 
 
 
