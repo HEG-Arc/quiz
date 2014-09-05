@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.graphics import barcode
 from reportlab.graphics.barcode.qr import QrCodeWidget
@@ -42,7 +42,7 @@ class Printer:
     canWheel = float(percent) >= float(wheel_threshold) / float(number_questions)
 
     parts = []
-    #imagename = "C:\Users\antoine.rosselet\Documents\GitHub\quiz\backend\images\stylo.png"
+    imagename = "images/stylo.png"
     normal.spaceAfter = 18
     if canWheel:
       parts.append(Paragraph("Scannez votre ticket pour tourner la roue!", normal))
@@ -52,8 +52,8 @@ class Printer:
       d.vAlign = "TOP"    
       parts.append(d)
     else:
-      parts.append(Paragraph("Venez chercher un stylo!", normal))
-      #parts.append(Image(filename))
+      parts.append(Paragraph("Bon pour un stylo", normal))
+      parts.append(Image(filename))
 
     parts.append(Paragraph(str(app.config.scoreValueTable()[raw_score]), h1))
     empty_star = u"\uF006"
