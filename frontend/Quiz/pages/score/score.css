@@ -53,12 +53,14 @@
 .down-arrow{
 	display: block;
     cursor: pointer;
-    position: relative;
-    width: 140px;
-    height: 280px;
+    position: absolute;
+    width: 100px;
+    height: 200px;
     margin: 50px auto;
     border-top: transparent;
     opacity: 0;
+	bottom: 80px;
+	right: 350px;
 }
 .down-arrow:before,
 .down-arrow:after
@@ -71,16 +73,16 @@
 .down-arrow:before{
 	left: 29px;
     top: 0;
-    width: 100px;
-    height: 180px;
+    width: 60px;
+    height: 100px;
     background-color: #E53200;
 }
 .down-arrow:after{
 	left: 0;
-	top: 180px;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    border-top: 80px solid #E53200;
+	top: 100px;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 60px solid #E53200;
 }
 
 @keyframes bounce {

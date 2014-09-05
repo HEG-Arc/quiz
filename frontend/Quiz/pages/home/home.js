@@ -10,8 +10,8 @@
         // populates the page elements with the app's data.
         ready: function (element, options) {
             // TODO: Initialize the page here.
-            var startButton = element.querySelector("#start");
-            startButton.addEventListener("click", this.handleStart);
+            this.startButton = element.querySelector("#start");
+            this.startButton.addEventListener("click", this.handleStart.bind(this));
         },
 
         unload: function () {
@@ -25,6 +25,7 @@
         },
 
         handleStart: function (mouseEvent) {
+            this.startButton.innerText = 'chargement';
             Game.start();
         }
     });
