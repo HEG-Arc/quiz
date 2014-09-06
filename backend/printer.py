@@ -55,6 +55,7 @@ class Printer:
       parts.append(Paragraph(app.config.get('no_wheel_txt'), normal))
       parts.append(Image(imagename, 4*cm, 4*cm))
 
+    raw_score = min(raw_score, len(app.config.scoreValueTable())-1)
     parts.append(Paragraph(str(app.config.scoreValueTable()[raw_score]), h1))
     empty_star = u"\uF006"
     full_star = u"\uF005"

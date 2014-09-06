@@ -12,6 +12,10 @@
             this.startButton = element.querySelector("#start");
             this.pic = element.querySelector(".slide");
             this.element = element;
+            this.fetchData();
+            
+        },
+        fetchData: function(){
             WinJS.Promise.timeout(3000, WinJS.xhr({
                 url: Game.apiUrl + '/home',
                 headers: {
@@ -26,14 +30,12 @@
                     this.startButton.addEventListener("click", this.handleStart.bind(this));
                     this.nextPic();
                     this.timer = setInterval(this.nextPic.bind(this), data.stimeout * 1000);
-                    
+
                 }.bind(this),
                 function error() {
-
-                }
+                    this.fetchData();
+                }.bind(this)
             ));
-            
-            
         },
         nextPic: function () {
             if (this.picIndex >= this.data.slideshow.length) {

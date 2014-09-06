@@ -14,7 +14,8 @@ nav{
 	padding: 0 20px;
 }
 nav img{
-	vertical-align: middle;
+	vertical-align: top;
+	padding-top: 30px;
 }
 #contenthost {
 	-ms-grid-row: 2;
@@ -23,6 +24,10 @@ nav img{
 #progress{
 	display:inline-block;
 	margin-left: 20px;
+	width: 800px;
+	overflow:hidden;
+	white-space:nowrap;
+
 }
 
 #progress .active{
@@ -42,7 +47,7 @@ nav img{
 	border-color: #00FF91;
 }
 .question-status-repeater{
-	display: inline-block;
+	display:inline-block;
 }
 .question-status{
 	display: inline-block;

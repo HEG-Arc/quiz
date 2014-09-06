@@ -122,6 +122,7 @@
                 obj.cls = 'question-status active';
                 //hack to trigger repeater update... winjs bad...
                 this.questions.setAt(this.index, obj);
+                WinJS.Utilities.query('.question-status-repeater')[this.index].scrollIntoView();
                 var question = this.data.questions.shift();
                 nav.navigate("/pages/question/question.html", { question: question });
                 this.state = "question";
@@ -170,7 +171,7 @@
         updateScore: function () {
             //manual upate, making winjs binding to comlicated...
             var score = WinJS.Utilities.query('#score-display')[0];
-            score.innerText =  this.data ? this.data.scores[this.score] : '';
+            score.innerText =  this.data ? this.data.scores[Math.min(this.score, this.data.scores.length-1)] : '';
         }
     });
 

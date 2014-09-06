@@ -79,7 +79,7 @@ class App:
     #machine, session, score_hash, ctrl flag?
     code = str(self.machine)
     code += str(session)
-    code += str(self.config.scoreHashTable()[int(raw_score)])
+    code += str(self.config.scoreHashTable()[min(int(raw_score), len(self.config.scoreHashTable())-1)])
     code += str(compute_checksum(code))
 
     #log
@@ -177,7 +177,8 @@ class DB:
     data = [0 for i in app.config.scoreHashTable()]
     
     for score in c.execute("SELECT score, COUNT(*) FROM attempts WHERE score IS NOT NULL GROUP BY score ORDER BY score ASC").fetchall():
-      data[score[0]] = score[1]
+      if score[0] < len(data):
+        data[score[0]] = score[1]
     return data
   
 class MyRequestHandler (SimpleHTTPServer.SimpleHTTPRequestHandler):

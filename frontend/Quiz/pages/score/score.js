@@ -9,7 +9,7 @@
         ready: function (element, options) {
             // TODO: Initialize the page here.
             element.querySelector('#score-info').innerText = Game.data.scoreInfo;
-            element.querySelector('#score').innerText = Game.data.scores[options.score];
+            element.querySelector('#score').innerText = Game.data.scores[Math.min(options.score, Game.data.scores.length-1)];
             var ticketTxt = element.querySelector('.ticket');
             ticketTxt.innerHTML = Game.data.printWaitTxt;
             WinJS.xhr({

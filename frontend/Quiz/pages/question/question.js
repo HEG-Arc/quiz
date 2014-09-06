@@ -32,7 +32,15 @@
             self = this;
             this.question = options.question;
             element.querySelector('#question').innerText = this.question.question;
-            var answers = shuffle(this.question.answers.slice(0));
+            var answers;
+            if (this.question.answers.length === 2) {
+                //always display Vrai, Faux
+                answers = this.question.answers.slice(0).sort().reverse();
+
+            } else {
+                answers = shuffle(this.question.answers.slice(0));
+            }
+            
             
             this.answersList = element.querySelector('#answers')
             this.answersList.winControl.itemDataSource = new WinJS.Binding.List(answers).dataSource;
