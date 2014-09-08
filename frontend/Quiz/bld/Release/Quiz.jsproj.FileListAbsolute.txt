@@ -12,4 +12,4 @@ C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\qualifiers.txt
 C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\qualifiers.txt.intermediate
 C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bld\Release\ProjectArchitectures.txt
-C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\resources.pri
+C:\Users\Boris\Documents\GitHub\quiz\frontend\Quiz\bin\Release\ReverseMap\resources.pri

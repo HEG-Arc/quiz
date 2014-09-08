@@ -44,7 +44,9 @@
             WinJS.UI.Animation.fadeOut(this.pic).done(function () {
                 this.pic.src = Game.apiUrl + '/slideshow/' + this.data.slideshow[this.picIndex];
                 this.picIndex++;
-                WinJS.UI.Animation.fadeIn(this.pic);
+                setTimeout(function () {
+                    WinJS.UI.Animation.fadeIn(this.pic);
+                }.bind(this), 100);
             }.bind(this));
             
         },
