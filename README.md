@@ -15,7 +15,7 @@ questions.yml
 https://sites.google.com/site/pydatalog/python/pip-for-windows
 pip install reportlab
 
-config.cfg
+config.cfghttp://blogs.msdn.com/b/patricka/archive/2012/11/05/how-do-i-deploy-a-windows-8-app-to-another-device-for-testing.aspx
 set adobe path and printer name,... to foxitreader better results
 
 http://www.foxitsoftware.com/Secure_PDF_Reader/
@@ -29,3 +29,21 @@ http://windows.microsoft.com/en-us/windows-vista/turn-on-automatic-logon
 IMPORTANT !
 http://msdn.microsoft.com/en-us/library/windows/apps/dn640582.aspx
 checknetisolation loopbackexempt -a -n=<package family name>
+
+http://msdn.microsoft.com/en-us/library/windows/desktop/jj835832(v=vs.85).aspx
+
+
+Create self-signed key
+MakeCert /n "CN=Haute Ecole Arc Gestion" /r /h 0 /eku "1.3.6.1.5.5.7.3.3,1.3.6.1.4.1.311.10.3.13" /e 12/31/2016 /sv MyKey.pvk MyKey.cer
+Pvk2Pfx /pvk MyKey.pvk /pi pvkPassword /spc MyKey.cer /pfx MyKey.pfx
+Certutil -addStore TrustedPeople MyKey.cer
+
+http://technet.microsoft.com/library/hh852635.aspx
+slmgr /ipk <sideloading product key>
+slmgr /ato ec67814b-30e6-4a50-bf7b-d55daf729d1e
+HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Appx\AllowAllTrustedApps = 1
+
+import-module appx
+add-appxpackage “SampleApp”
+
+
