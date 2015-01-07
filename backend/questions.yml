@@ -1,33 +1,216 @@
-# question source http://www.indiabix.com/
 1:
-  question: Grand Central Terminal, Park Avenue, New York is the world's...?
+  question: En quelle année a été fondée la HE-ARC?
   answers:
-    - largest railway station
-    - highest railway station
-    - longest railway station
-    - None of the above
-  explain: "For more details, Refer: http://en.wikipedia.org/wiki/Grand_Central_Terminal"
+    - 2004
+    - 2003
+    - 2005
+    - 2002
+  explain: "2004: On fêtera la 10ème rentrée le 17 septembre 2014."
 2:
-  question: Entomology is the science that studies...?
+  question: Quel est le nom du directeur actuel de la HEG Arc.
   answers:
-    - Insects
-    - Behavior of human beings
-    - The origin and history of technical and scientific terms
-    - The formation of rocks
-  explain: "Entomology: The branch of zoology concerned with the study of insects."
+    - Olivier Kubli
+    - Brigitte Bachelard
+    - Luciana Vaccaro
+  explain: "Olivier Kubli est le directeur de la HEG depuis 2007."
 3:
-  question: Eritrea, which became the 182nd member of the UN in 1993, is in the continent of
+  question: Combien d'étudiants, formations de base et formations continues comprises, compte actuellement la HEG Arc?
   answers:
-    - Africa
-    - Asia
-    - Australia
-    - Europe
-  explain: No answer description available for this question.
+    - plus de 1200
+    - 1053
+    - 937
+    - 852
+  explain: "Plus de 1200: depuis quelques années les effectifs sont en constante augmentation. Ce qui fait de la HEG Arc le plus grand domaine de la HE-Arc."
 4:
-  question: What's a web browser?
+  question: Combien d'étudiants ont terminé avec succès leurs études Bachelor au printemps 2014?
   answers:
-    - A software program that allows you to access sites on the World Wide Web
-    - A kind of spider
-    - A computer that stores WWW files
-    - A person who likes to look at websites
-  explain: No answer description available for this question.
+    - 107
+    - 134
+    - 92
+    - 86
+  explain: "107: Lors de la dernière remise des diplômes, 91 économistes d'entreprise et 16 informaticiens de gestion ont reçu leur Bachelor."
+5:
+  question: En faisant la HEG Arc, je peux seulement exercer le métier d’économiste.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, les Bachelors proposés par la HEG Arc sont au nombre de 3: en Droit économique, en Economie d’entreprise et en Informatique de gestion."
+6:
+  question: Combien d’étudiant-e-s en Bachelor fréquentent la HEG Arc?
+  answers:
+    - Environ 700
+    - Environ 100
+    - Environ 200
+    - Environ 1000
+  explain: "Environ 700. Durant l’année académique 2013-2014, 728 étudiant-e-s suivaient des cours Bachelor."
+7:
+  question: Quels sont les sites de formation de la HEG Arc?
+  answers:
+    - Neuchâtel et Delémont
+    - Neuchâtel et La Chaux-de-Fonds
+    - Neuchâtel et Bienne
+  explain: "Neuchâtel et Delémont."
+8:
+  question: Pour commencer des études en Informatique de gestion, il faut être un-e geek.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, l’étude des ordinateurs fait partie du plan de cours mais ne constitue qu’une partie de l’enseignement qui comprend par exemple des langues, de la gestion d’entreprise ou des ressources humaines."
+9:
+  question: En plus des formations Bachelor, combien de filières de formation existe-t-il à la HEG Arc?
+  answers:
+    - 40
+    - 5
+    - 10
+    - 80
+  explain: "40, en comptant les formations continues certifiantes et grand public."
+10:
+  question: Quel salaire annuel moyen nos diplômé-e-s peuvent-ils toucher après leur 1ère année de travail?
+  answers:
+    - CHF 80'000.-
+    - CHF 50'000.-
+    - CHF 100'000.-
+  explain: "CHF 80'000.-, les gros salaires atteignant même CHF 90'000.-."
+11:
+  question: En Informatique de gestion, il y a beaucoup de branches techniques comme par exemple la physique ou les maths. 
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, il n’y a pas de physique en Informatique de gestion."
+12:
+  question: A la HEG Arc, on peut suivre des cours de russe. 
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, comme troisième langue en Economie d’entreprise."
+13:
+  question: Durant mes études à la HEG Arc, je peux suivre un semestre à l’étranger.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, dans des Hautes écoles en Russie, France, Côte d’Ivoire, Belgique, ou Tunisie."
+14:
+  question: A la HEG Arc, je suis épaulé-e lors de mes recherches d’emploi à la fin de mes études.
+  answers:
+    - VRAI
+    - FAUX
+ explain: "VRAI, grâce au Centre de carrière."
+15:
+  question: Les cours à la HEG Arc sont très théoriques.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, beaucoup d’exemples et de cas pratiques illustrent les cours."
+16:
+  question: A la cafétéria de la HEG Arc, il est possible de manger un repas chaud pour moins de CHF 10.-.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI."
+17:
+  question: Je peux pratiquer gratuitement de nombreux sports à la HEG Arc, à côté des cours.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, tout-e étudiant-e a accès à la vaste offre du SUN (Sports universitaires) de l’Université de Neuchâtel."
+18:
+  question: Les étudiant-e-s peuvent tisser des liens grâce à des associations estudiantines.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, Gest’Arc est l’association des étudiant-e-s et Net-Arc, celle regroupant des diplômé-e-s."
+19:
+  question: A la HEG Arc, le pourcentage de filles parmi les étudiant-e-s est de 20%.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, il est d’environ 40%."
+20:
+  question: L’âge moyen des collaboratrices et collaborateurs à la HEG Arc est de 50 ans.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, il est d’environ 40 ans."
+21:
+  question: On peut effectuer une formation Bachelor à la HEG Arc juste après l’école obligatoire.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, après une formation dans le Secondaire 2."
+22:
+  question: La HEG Arc est située plus près du port de Neuchâtel que de la gare CFF.
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, le contraire."
+23:
+  question: Il est possible d’avoir un travail en parallèle de mes études à la HEG Arc.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, en suivant mes études en emploi ou à temps partiel."
+
+24: 
+  question: Pour pouvoir faire des études en emploi, il faut travailler au moins à:
+  answers:
+    - 50 %
+    - 30 %
+    - 80 %
+  explain: "50%."
+25:
+  question: Le bâtiment Campus Arc 1 où se trouve la HEG Arc se situe:
+  answers:
+    - A 5 minutes à pied de la gare de Neuchâtel
+    - A 5 minutes à pied de la gare de Delémont
+    - A 5 minutes à pied de la gare de Bienne
+    - A 5 minutes à pied de la gare de La Chaux-de-Fonds
+  explain: "A 5 minutes à pied de la gare de Neuchâtel."
+26:
+  question: Chaque année, ce sont 600 à 700 personnes qui participent au Bal HEG.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, cette grande manifestation a lieu chaque année au printemps."
+27:
+  question: La HEG Arc facilite la rencontre entre ses futur-e-s diplômé-e-s et de potentiels employeurs.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, chaque année est organisé le Forum HEG pendant lequel des entreprises se présentent aux jeunes diplômé-e-s."
+28:
+  question: A la fin de mes études à la HEG Arc, je dois effectuer un stage afin de trouver un emploi
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, les diplômé-e-s sont directement opérationnels au terme de leurs études."
+29:
+  question: Après mon Bachelor, il est possible de poursuivre mes études avec un Master.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, le Bachelor donne accès à la réalisation d'un Master of Science HES-SO ou d'une formation postrgraduée (EMBA, MAS, DAS ou CAS) en Suisse et en Europe."
+30:
+  question: Il est possible d'obtenir des bourses pour réaliser un échange à l'étranger pendant mes études à la HEG Arc.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, grâce au Service de mobilité de la HEG Arc."
+31:
+  question: Le bâtiment Campus Arc 1 où se trouve la HEG Arc à Neuchâtel a été inauguré en:
+  answers:
+    - 2009
+    - 1950
+    - 2000
+  explain: "2009: c'est un bâtiment moderne, offrant une infrastructure de pointe."
+32:
+  question: Les études à la HEG Arc ne comportent pas de cours de langue
+  answers:
+    - FAUX
+    - VRAI
+  explain: "FAUX, selon les filières, l'anglais, l'allemand ou le russe sont enseignés. Il est même possible de se préparer à des examens de certification internationale (BEC, PWD ou TRKI)."
+33:
+  question: Sous certaines conditions, je peux obtenir une bourse d'étude pour financer ma formation à la HEG Arc.
+  answers:
+    - VRAI
+    - FAUX
+  explain: "VRAI, les offices des bourses du canton de domicile sont compétents en la matière."
