@@ -44,6 +44,6 @@ slmgr /ato ec67814b-30e6-4a50-bf7b-d55daf729d1e
 HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Appx\AllowAllTrustedApps = 1
 
 import-module appx
-add-appxpackage “SampleApp”
+add-appxpackage Quiz_1.0.0.10_AnyCPU.appx
 
 
