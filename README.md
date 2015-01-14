@@ -15,8 +15,10 @@ questions.yml
 https://sites.google.com/site/pydatalog/python/pip-for-windows
 pip install reportlab
 
-config.cfghttp://blogs.msdn.com/b/patricka/archive/2012/11/05/how-do-i-deploy-a-windows-8-app-to-another-device-for-testing.aspx
+config.cfg http://blogs.msdn.com/b/patricka/archive/2012/11/05/how-do-i-deploy-a-windows-8-app-to-another-device-for-testing.aspx
 set adobe path and printer name,... to foxitreader better results
+WARNING: download foxit version 6.x
+Version 7.x opens a pdf file after printing, causing a server crash
 
 http://www.foxitsoftware.com/Secure_PDF_Reader/
 
