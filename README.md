@@ -41,7 +41,17 @@ Pvk2Pfx /pvk MyKey.pvk /pi pvkPassword /spc MyKey.cer /pfx MyKey.pfx
 Certutil -addStore TrustedPeople MyKey.cer
 
 http://technet.microsoft.com/library/hh852635.aspx
-slmgr /ipk <sideloading product key>
+
+Check if licence activated with:
+slmgr /dli
+
+If not, activate licence for windows:
+
+slmgr /ato
+
+... and product:
+
+slmgr /ipk <sideloading product key> = XQ6VW-H4NHD-XRDJV-C9M6K-H49V7
 slmgr /ato ec67814b-30e6-4a50-bf7b-d55daf729d1e
 HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Appx\AllowAllTrustedApps = 1
 
